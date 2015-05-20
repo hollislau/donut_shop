@@ -24,12 +24,13 @@
   }
 
   topPot.prototype.donutsDayCalc = function() {
+    this.donutsDay = 0;
     for (var i = 0; i < this.donutsHour.length; i++) {
       this.donutsDay += this.donutsHour[i];
     }
   }
 
-  topPot.prototype.renderRow = function(index) {
+  topPot.prototype.renderRow = function() {
     var row = document.createElement("tr");
     var header = document.createElement("th");
     var total = document.createElement("td");
@@ -38,27 +39,93 @@
     total.textContent = this.donutsDay;
 
     document.getElementById("donut-estimate").appendChild(row);
-    document.getElementsByTagName("tr")[index].appendChild(header);
+    document.getElementById("donut-estimate").lastChild.appendChild(header);
 
     for (var i = 0; i < this.donutsHour.length; i++) {
       var data = document.createElement("td");
       data.textContent = this.donutsHour[i];
-      document.getElementsByTagName("tr")[index].appendChild(data);
+      document.getElementById("donut-estimate").lastChild.appendChild(data);
     }
 
-    document.getElementsByTagName("tr")[index].appendChild(total);
+    document.getElementById("donut-estimate").lastChild.appendChild(total);
   }
 
-  var shops = [new topPot("Downtown", 8, 43, 4.5), new topPot("Capitol Hill", 4, 37, 2), new topPot("South Lake Union", 9, 23, 6.33),
-               new topPot("Wedgewood", 2, 28, 1.25), new topPot("Ballard", 8, 58, 3.75)];
+  var shops = [new topPot("Downtown", 8, 43, 4.5),
+               new topPot("Capitol Hill", 4, 37, 2),
+               new topPot("South Lake Union", 9, 23, 6.33),
+               new topPot("Wedgewood", 2, 28, 1.25),
+               new topPot("Ballard", 8, 58, 3.75)];
 
-  for (var i = 0; i < shops.length; i++) {
-    shops[i].generateRandom();
-    shops[i].donutsHourCalc();
-    shops[i].donutsDayCalc();
-    shops[i].renderRow(i+1);
+  var generateCalc = function() {
+    for (var i = 0; i < shops.length; i++) {
+      shops[i].generateRandom();
+      shops[i].donutsHourCalc();
+      shops[i].donutsDayCalc();
+    }
   }
 
+  var renderTable = function() {
+    for (var i = 0; i < shops.length; i++) {
+      shops[i].renderRow();
+    }
+  }
+
+  var addNewShop = function() {
+    var locationName = document.getElementById("location");
+    var minCust = document.getElementById("min-cust");
+    var maxCust = document.getElementById("max-cust");
+    var avgDonuts = document.getElementById("avg-donuts-cust");
+    var newShop = new topPot(locationName.value, parseInt(minCust.value), parseInt(maxCust.value), parseInt(avgDonuts.value))
+
+    newShop.generateRandom();
+    newShop.donutsHourCalc();
+    newShop.donutsDayCalc();
+    shops.push(newShop);
+    newShop.renderRow();
+  }
+
+  var updateShop = function() {
+    var locationUpdate = document.getElementById("location-update");
+    var minCustUpdate = document.getElementById("min-cust-update");
+    var maxCustUpdate = document.getElementById("max-cust-update");
+    var avgDonutsUpdate = document.getElementById("avg-donuts-cust-update");
+
+    for (var i = 0; i < shops.length; i++) {
+      if (locationUpdate.value === shops[i].name) {
+        if (minCustUpdate.value) {
+          shops[i].minCustHour = parseInt(minCustUpdate.value);
+          if (maxCustUpdate.value) {
+            shops[i].maxCustHour = parseInt(maxCustUpdate.value);
+            if (avgDonutsUpdate.value) {
+              shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
+            }
+          }
+        } else if (maxCustUpdate.value) {
+          shops[i].maxCustHour = parseInt(maxCustUpdate.value);
+          if (avgDonutsUpdate.value) {
+            shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
+          }
+        } else if (avgDonutsUpdate.value) {
+          shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
+        }
+        shops[i].generateRandom();
+        shops[i].donutsHourCalc();
+        shops[i].donutsDayCalc();
+      }
+
+      document.getElementById("donut-estimate").innerHTML = "";
+      renderTable();
+    }
+  }
+
+  var submitButton = document.getElementById("submit");
+  var updateButton = document.getElementById("update");
+
+  submitButton.addEventListener("click", addNewShop, false);
+  updateButton.addEventListener("click", updateShop, false);
+
+  generateCalc();
+  renderTable();
   console.log(shops);
 
 })()
