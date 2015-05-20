@@ -50,11 +50,13 @@
     document.getElementById("donut-estimate").lastChild.appendChild(total);
   }
 
-  var shops = [new topPot("Downtown", 8, 43, 4.5),
-               new topPot("Capitol Hill", 4, 37, 2),
-               new topPot("South Lake Union", 9, 23, 6.33),
-               new topPot("Wedgewood", 2, 28, 1.25),
-               new topPot("Ballard", 8, 58, 3.75)];
+  var shops = [];
+
+  shops.push(new topPot("Downtown", 8, 43, 4.5));
+  shops.push(new topPot("Capitol Hill", 4, 37, 2));
+  shops.push(new topPot("South Lake Union", 9, 23, 6.33));
+  shops.push(new topPot("Wedgewood", 2, 28, 1.25));
+  shops.push(new topPot("Ballard", 8, 58, 3.75));
 
   var generateCalc = function() {
     for (var i = 0; i < shops.length; i++) {
@@ -80,8 +82,12 @@
     newShop.generateRandom();
     newShop.donutsHourCalc();
     newShop.donutsDayCalc();
+
     shops.push(newShop);
+
     newShop.renderRow();
+
+    console.log(shops);
   }
 
   var updateShop = function() {
@@ -99,6 +105,8 @@
             if (avgDonutsUpdate.value) {
               shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
             }
+          } else if (avgDonutsUpdate.value) {
+            shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
           }
         } else if (maxCustUpdate.value) {
           shops[i].maxCustHour = parseInt(maxCustUpdate.value);
@@ -116,6 +124,8 @@
       document.getElementById("donut-estimate").innerHTML = "";
       renderTable();
     }
+
+    console.log(shops);
   }
 
   var submitButton = document.getElementById("submit");
@@ -125,7 +135,9 @@
   updateButton.addEventListener("click", updateShop, false);
 
   generateCalc();
+
   renderTable();
+
   console.log(shops);
 
 })()
