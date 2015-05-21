@@ -10,7 +10,10 @@
     <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Istok+Web:400,700,400italic|Oswald:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <h1 class="title"><img src="images/donuts_icon.png">Top Pot Donuts</h1>
+    <header>
+      <img class="icon" src="images/donuts_icon.png">
+      <h1 class="title">Top Pot Donuts</h1>
+    </header>
     <table>
       <h2>Demand Estimates By Location:</h2>
       <thead>
@@ -33,7 +36,7 @@
       <tbody id="donut-estimate">
       </tbody>
     </table>
-    <p>This table estimates the number of donuts required to sufficiently serve customers at each location, based on past customer data. Estimates are provided on a per hour and per day basis.</p>
+    <p>This table predicts donut demand at each location, based on past customer data. Estimates are provided on a per hour and per day basis.</p>
     <section>
       <h3>Add a new location:</h3>
         <input id="location" type="text" name="location-name" placeholder="Location">
