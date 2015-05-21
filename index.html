@@ -7,42 +7,41 @@
     <meta name="description" content="Estimate the demand for donuts per hour/day">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="styles.css" type="text/css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Istok+Web:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Istok+Web:400,700,400italic|Oswald:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <h1>Top Pot Donuts - Demand Estimates</h1>
+    <h1 class="title"><img src="images/donuts_icon.png">Top Pot Donuts</h1>
     <table>
-      <h2>Estimates By Location:</h1>
+      <h2>Demand Estimates By Location:</h2>
       <thead>
         <tr>
-          <th>Locations</th>
-          <th scope="col">7:00 AM</th>
-          <th scope="col">8:00 AM</th>
-          <th scope="col">9:00 AM</th>
-          <th scope="col">10:00 AM</th>
-          <th scope="col">11:00 AM</th>
-          <th scope="col">12:00 PM</th>
-          <th scope="col">1:00 PM</th>
-          <th scope="col">2:00 PM</th>
-          <th scope="col">3:00 PM</th>
-          <th scope="col">4:00 PM</th>
-          <th scope="col">5:00 PM</th>
-          <th scope="col">Total</th>
+          <th class="location">Locations</th>
+          <th class="hour" scope="col">7:00 AM</th>
+          <th class="hour" scope="col">8:00 AM</th>
+          <th class="hour" scope="col">9:00 AM</th>
+          <th class="hour" scope="col">10:00 AM</th>
+          <th class="hour" scope="col">11:00 AM</th>
+          <th class="hour" scope="col">12:00 PM</th>
+          <th class="hour" scope="col">1:00 PM</th>
+          <th class="hour" scope="col">2:00 PM</th>
+          <th class="hour" scope="col">3:00 PM</th>
+          <th class="hour" scope="col">4:00 PM</th>
+          <th class="hour" scope="col">5:00 PM</th>
+          <th class="hour" scope="col">Daily</th>
         </tr>
       </thead>
       <tbody id="donut-estimate">
       </tbody>
     </table>
-    <p>This table estimates the number of donuts required to sufficiently serve customers at each location, based on past customer data. <br>
-      Estimates are provided on a per hour and per day basis.
+    <p>This table estimates the number of donuts required to sufficiently serve customers at each location, based on past customer data. Estimates are provided on a per hour and per day basis.</p>
     <section>
-      <h3>Add new location data here:</h3>
+      <h3>Add a new location:</h3>
         <input id="location" type="text" name="location-name" placeholder="Location">
         <input id="min-cust" type="text" name="min-customer" placeholder="Minimum customers">
         <input id="max-cust" type="text" name="max-customer" placeholder="Maximum customers">
         <input id="avg-donuts-cust" type="text" name="avg-donuts-customer" placeholder="Average donuts/customer">
         <button id="submit">Submit</button>
-      <h3>Update location data here:</h3>
+      <h3>Update a location:</h3>
         <input id="location-update" type="text" name="location-name-update" placeholder="Location">
         <input id="min-cust-update" type="text" name="min-customer-update" placeholder="Minimum customers">
         <input id="max-cust-update" type="text" name="max-customer-update" placeholder="Maximum customers">

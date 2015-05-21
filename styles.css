@@ -1,11 +1,40 @@
+body {
+  background-image: url("images/background_low.jpg");}
 h1, h2, h3, th {
-  font-family: 'News Cycle', sans-serif;
-  color: #002F2F;}
+  font-family: "News Cycle", sans-serif;
+  color: #FCFAE1;
+  /*color: #B9121B;*/
+  padding-left: 10px;}
+h2 {
+  width: 320px;}
+h3 {
+  width: 150px;}
+th {
+  color: #FCFAE1;
+  background-color: rgba(189, 141, 70, 0.7);
+  padding: 10px 10px 10px 10px;}
+.hour {
+  width: 65px;}
+.location {
+  text-decoration: underline;}
+.title {
+  font-family: "Oswald", sans-serif;
+  font-size: 36px;
+  color: #FCFAE1;
+  text-shadow: 3px 3px 0px #000000;
+  vertical-align: middle;
+  background-color: rgba(76, 27, 27, 0.7);
+  width: 1160px;
+  padding: 10px 0px 2px 20px;}
 td {
-  font-family: 'Istok Web', sans-serif;
-  color: #046380;}
+  font-family: "Istok Web", sans-serif;
+  background-color: rgba(246, 228, 151, 0.7);
+  text-align: center;
+  color: #B9121B;}
 p {
-  font-family: 'Istok Web', sans-serif;
+  font-family: "Istok Web", sans-serif;
   font-style: italic;
-  color: #002F2F;}
+  width: 1150px;
+  color: #FCFAE1;
+  padding-left: 10px;}
 
