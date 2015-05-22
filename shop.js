@@ -54,7 +54,7 @@
 
   shops.push(new topPot("Downtown", 8, 43, 4.5));
   shops.push(new topPot("Capitol Hill", 4, 37, 2));
-  shops.push(new topPot("South Lake Union", 9, 23, 6.33));
+  shops.push(new topPot("S. Lake Union", 9, 23, 6.33));
   shops.push(new topPot("Wedgewood", 2, 28, 1.25));
   shops.push(new topPot("Ballard", 8, 58, 3.75));
 
@@ -78,6 +78,8 @@
     var maxCust = document.getElementById("max-cust");
     var avgDonuts = document.getElementById("avg-donuts-cust");
     var newShop = new topPot(locationName.value, parseInt(minCust.value), parseInt(maxCust.value), parseInt(avgDonuts.value))
+
+    //Add code to check for blank fields!
 
     newShop.generateRandom();
     newShop.donutsHourCalc();

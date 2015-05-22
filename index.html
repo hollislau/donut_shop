@@ -3,19 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Top Pot Donuts - Demand Estimates</title>
-    <meta name="description" content="Estimate the demand for donuts per hour/day">
+    <title>Top Pot Doughnuts - Demand Estimates By Location</title>
+    <meta name="description" content="Table to estimate the demand for doughnuts at Top Pot locations">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="styles.css" type="text/css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Istok+Web:400,700,400italic|Oswald:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <header>
-      <img class="icon" src="images/donuts_icon.png">
-      <h1 class="title">Top Pot Donuts</h1>
+      <a href="https://www.facebook.com/pages/I-Hate-Dunkin-Donuts/301803463491" target="_blank" class="dunkin">I Hate Dunkin' Donuts</a>
+      <img class="icon" src="images/top_pot.png">
+      <h1 class="title">T<small>OP</small> P<small>OT</small> D<small>OUGHNUTS</small></h1>
     </header>
     <table>
-      <h2>Demand Estimates By Location:</h2>
+      <h2>Doughnut Demand Estimates By Location:</h2>
       <thead>
         <tr>
           <th class="location">Locations</th>
@@ -36,20 +37,37 @@
       <tbody id="donut-estimate">
       </tbody>
     </table>
-    <p>This table predicts donut demand at each location, based on past customer data. Estimates are provided on a per hour and per day basis.</p>
-    <section>
-      <h3>Add a new location:</h3>
-        <input id="location" type="text" name="location-name" placeholder="Location">
-        <input id="min-cust" type="text" name="min-customer" placeholder="Minimum customers">
-        <input id="max-cust" type="text" name="max-customer" placeholder="Maximum customers">
-        <input id="avg-donuts-cust" type="text" name="avg-donuts-customer" placeholder="Average donuts/customer">
+    <p>This table predicts doughnut demand at each location, based on past customer data. Estimates are provided on a per hour and per day basis.</p>
+    <section class="fields">
+      <fieldset>
+        <legend>Add A New Location</legend>
+        <label>Location:</label><br>
+        <input id="location" type="text" name="location-name"><br>
+        <label>Minimum Customers:</label><br>
+        <input id="min-cust" type="text" name="min-customer"><br>
+        <label>Maximum Customers:</label><br>
+        <input id="max-cust" type="text" name="max-customer"><br>
+        <label>Avg Donuts Per Customer:</label><br>
+        <input id="avg-donuts-cust" type="text" name="avg-donuts-customer"><br>
         <button id="submit">Submit</button>
-      <h3>Update a location:</h3>
-        <input id="location-update" type="text" name="location-name-update" placeholder="Location">
-        <input id="min-cust-update" type="text" name="min-customer-update" placeholder="Minimum customers">
-        <input id="max-cust-update" type="text" name="max-customer-update" placeholder="Maximum customers">
-        <input id="avg-donuts-cust-update" type="text" name="avg-donuts-customer-update" placeholder="Average donuts/customer">
+      </fieldset>
+      <fieldset>
+        <legend>Update A Location</legend>
+        <label>Location:</label><br>
+        <input id="location-update" type="text" name="location-name-update"><br>
+        <label>Minimum Customers:</label><br>
+        <input id="min-cust-update" type="text" name="min-customer-update"><br>
+        <label>Maximum Customers:</label><br>
+        <input id="max-cust-update" type="text" name="max-customer-update"><br>
+        <label>Avg Donuts Per Customer:</label><br>
+        <input id="avg-donuts-cust-update" type="text" name="avg-donuts-customer-update"><br>
         <button id="update">Update</button>
+      </fieldset>
+    </section>
+    <section class="mission">
+      <img class="donut" src="images/2donuts.png">
+      <h2>Mission Statement:</h2>
+        <p>World domination through consumption of tasty, deep fried pastry. Obesity is the new status quo. This statement is endorsed by Homer J. Simpson and The American Doughnut Society.</p>
     </section>
     <script src="shop.js"></script>
   </body>
