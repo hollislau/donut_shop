@@ -50,6 +50,15 @@
     document.getElementById("donut-estimate").lastChild.appendChild(total);
   }
 
+  topPot.prototype.renderOption = function(index) {
+    var option = document.createElement("option");
+
+    option.textContent = this.name;
+    option.value = index;
+
+    document.getElementById("select").appendChild(option);
+  }
+
   var shops = [];
 
   shops.push(new topPot("Downtown", 8, 43, 4.5));
@@ -72,73 +81,105 @@
     }
   }
 
+  var renderDropdown = function() {
+    for (var i = 0; i < shops.length; i++) {
+      shops[i].renderOption(i);
+    }
+  }
+
   var addNewShop = function() {
     var locationName = document.getElementById("location");
     var minCust = document.getElementById("min-cust");
     var maxCust = document.getElementById("max-cust");
     var avgDonuts = document.getElementById("avg-donuts-cust");
-    var newShop = new topPot(locationName.value, parseInt(minCust.value), parseInt(maxCust.value), parseInt(avgDonuts.value))
+    var newShop = new topPot(locationName.value, parseFloat(minCust.value), parseFloat(maxCust.value), parseFloat(avgDonuts.value))
 
-    //Add code to check for blank fields!
+    if (locationName.value && minCust.value && maxCust.value && avgDonuts.value) {
+      newShop.generateRandom();
+      newShop.donutsHourCalc();
+      newShop.donutsDayCalc();
 
-    newShop.generateRandom();
-    newShop.donutsHourCalc();
-    newShop.donutsDayCalc();
+      shops.push(newShop);
 
-    shops.push(newShop);
+      newShop.renderRow();
+      newShop.renderOption(shops.length - 1);
 
-    newShop.renderRow();
+      locationName.value = "";
+      minCust.value = "";
+      maxCust.value = "";
+      avgDonuts.value = "";
+    }
 
     console.log(shops);
   }
 
+  var populateUpdate = function() {
+    var selectPopulate = document.getElementById("select");
+    var minCustPopulate = document.getElementById("min-cust-update");
+    var maxCustPopulate = document.getElementById("max-cust-update");
+    var avgDonutsPopulate = document.getElementById("avg-donuts-cust-update");
+    var selectShop = shops[selectPopulate.value];
+
+    minCustPopulate.value = selectShop.minCustHour;
+    maxCustPopulate.value = selectShop.maxCustHour;
+    avgDonutsPopulate.value = selectShop.avgDonutsCust;
+
+    console.log(selectPopulate.value);
+  }
+
   var updateShop = function() {
-    var locationUpdate = document.getElementById("location-update");
+    var locationUpdate = document.getElementById("select");
     var minCustUpdate = document.getElementById("min-cust-update");
     var maxCustUpdate = document.getElementById("max-cust-update");
     var avgDonutsUpdate = document.getElementById("avg-donuts-cust-update");
+    var updateShop = shops[locationUpdate.value];
 
-    for (var i = 0; i < shops.length; i++) {
-      if (locationUpdate.value === shops[i].name) {
-        if (minCustUpdate.value) {
-          shops[i].minCustHour = parseInt(minCustUpdate.value);
-          if (maxCustUpdate.value) {
-            shops[i].maxCustHour = parseInt(maxCustUpdate.value);
-            if (avgDonutsUpdate.value) {
-              shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
-            }
-          } else if (avgDonutsUpdate.value) {
-            shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
-          }
-        } else if (maxCustUpdate.value) {
-          shops[i].maxCustHour = parseInt(maxCustUpdate.value);
-          if (avgDonutsUpdate.value) {
-            shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
-          }
-        } else if (avgDonutsUpdate.value) {
-          shops[i].avgDonutsCust = parseInt(avgDonutsUpdate.value);
+    if (minCustUpdate.value) {
+      updateShop.minCustHour = parseFloat(minCustUpdate.value);
+      if (maxCustUpdate.value) {
+        updateShop.maxCustHour = parseFloat(maxCustUpdate.value);
+        if (avgDonutsUpdate.value) {
+          updateShop.avgDonutsCust = parseFloat(avgDonutsUpdate.value);
         }
-        shops[i].generateRandom();
-        shops[i].donutsHourCalc();
-        shops[i].donutsDayCalc();
+      } else if (avgDonutsUpdate.value) {
+        updateShop.avgDonutsCust = parseFloat(avgDonutsUpdate.value);
       }
-
-      document.getElementById("donut-estimate").innerHTML = "";
-      renderTable();
+    } else if (maxCustUpdate.value) {
+      updateShop.maxCustHour = parseFloat(maxCustUpdate.value);
+      if (avgDonutsUpdate.value) {
+        updateShop.avgDonutsCust = parseFloat(avgDonutsUpdate.value);
+      }
+    } else if (avgDonutsUpdate.value) {
+      updateShop.avgDonutsCust = parseFloat(avgDonutsUpdate.value);
     }
+
+    updateShop.generateRandom();
+    updateShop.donutsHourCalc();
+    updateShop.donutsDayCalc();
+
+    document.getElementById("donut-estimate").innerHTML = "";
+    renderTable();
+
+    minCustUpdate.value = "";
+    maxCustUpdate.value = "";
+    avgDonutsUpdate.value = "";
 
     console.log(shops);
   }
 
   var submitButton = document.getElementById("submit");
   var updateButton = document.getElementById("update");
+  var selectButton = document.getElementById("select");
 
   submitButton.addEventListener("click", addNewShop, false);
   updateButton.addEventListener("click", updateShop, false);
+  selectButton.addEventListener("change", populateUpdate, false);
 
   generateCalc();
 
   renderTable();
+
+  renderDropdown();
 
   console.log(shops);
 

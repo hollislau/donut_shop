@@ -1,7 +1,3 @@
-/* apply a natural box layout model to all elements, but allowing components to change */
-html {
-  box-sizing: border-box;}
-
 /**, *:before, *:after {
   box-sizing: inherit;}*/
 
@@ -54,9 +50,14 @@ table {
   border-spacing: 0;
 }*/
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;}
+
 body {
   background-image: url("images/background_low.jpg");
-  width: 960px;}
+  width: 960px;
+  margin: 0 auto;}
 
 header {
   background-color: rgba(76, 27, 27, 0.7);
@@ -90,17 +91,22 @@ fieldset {
   margin: 0px 20px;
   width: 173px;}
 
-button {
+button, select {
   font-family: "News Cycle", sans-serif;
   font-weight: bold;
   color: #B9121B;
   border-radius: 8px;
   /*background-color: #FCFAE1;*/
-  box-shadow: 2px 2px 0px #000000;
+  box-shadow: 2px 2px 0px #000000;}
+
+.modify-table {
   display: block;
   margin: 10px auto;
   position: relative;
   top: 5px;}
+
+.location-name {
+  margin: 0px 0px;}
 
 table {
   border-collapse: collapse;}
@@ -144,7 +150,7 @@ small {
 .hour {
   width: 60px;}
 
-.location {
+.table-header {
   text-decoration: underline;}
 
 .title {
@@ -154,12 +160,10 @@ small {
   text-shadow: 3px 3px 0px #000000;}
 
 .fields {
-  position: absolute;
-  left: 225px;}
+  width: 486px;
+  margin: 0 auto;}
 
-.mission {
-  position: relative;
-  top: 310px;}
+.mission {}
 
 .donut {
   margin: 4px 25px 10px 10px;
@@ -168,6 +172,6 @@ small {
 .dunkin {
   text-decoration: none;
   background-color: rgba(76, 27, 27, 0.7);
-  position: fixed;
-  top: 10px;
-  left: 768px;}
+  position: fixed;}
+  /*top: : 10px;*/
+  /*left: 768px;}*/
