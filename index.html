@@ -11,69 +11,123 @@
   </head>
   <body>
     <header>
-      <img class="icon" src="images/top_pot.png">
+      <img class="icon" src="images/top_pot.png" alt="Top Pot Doughnuts icon">
       <h1 class="title">T<small>OP</small> P<small>OT</small> D<small>OUGHNUTS</small>: S<small>TORE</small> M<small>ETRICS</small></h1>
-      <a href="https://www.facebook.com/pages/I-Hate-Dunkin-Donuts/301803463491" target="_blank" class="dunkin">I Hate Dunkin' Donuts</a>
+      <!-- <a href="https://www.facebook.com/pages/I-Hate-Dunkin-Donuts/301803463491" target="_blank" class="dunkin">I Hate Dunkin' Donuts</a> -->
     </header>
-    <table>
-      <h2>Doughnut Demand Estimates By Location:</h2>
-      <thead>
-        <tr>
-          <th class="table-header">Locations</th>
-          <th class="hour" scope="col">7:00 AM</th>
-          <th class="hour" scope="col">8:00 AM</th>
-          <th class="hour" scope="col">9:00 AM</th>
-          <th class="hour" scope="col">10:00 AM</th>
-          <th class="hour" scope="col">11:00 AM</th>
-          <th class="hour" scope="col">12:00 PM</th>
-          <th class="hour" scope="col">1:00 PM</th>
-          <th class="hour" scope="col">2:00 PM</th>
-          <th class="hour" scope="col">3:00 PM</th>
-          <th class="hour" scope="col">4:00 PM</th>
-          <th class="hour" scope="col">5:00 PM</th>
-          <th class="hour" scope="col">Daily</th>
-        </tr>
-      </thead>
-      <tbody id="donut-estimate">
-      </tbody>
-    </table>
-    <p>This table predicts doughnut demand at each location, based on past customer data. Estimates are provided on a per hour and per day basis.</p>
-    <section class="fields">
-      <fieldset>
-        <legend>Add New Location</legend>
-        <form action="#" onsubmit="return false">
-          <label>Location:</label><br>
-          <input id="location" type="text" name="location-name" required><br>
-          <label>Minimum Customers:</label><br>
-          <input id="min-cust" type="number" name="min-customer" required><br>
-          <label>Maximum Customers:</label><br>
-          <input id="max-cust" type="number" name="max-customer" required><br>
-          <label>Avg Donuts Per Customer:</label><br>
-          <input id="avg-donuts-cust" type="number" name="avg-donuts-customer" required><br>
-          <button id="submit" class="modify-table">Add</button>
-        </form>
-      </fieldset>
-      <fieldset>
-        <legend>Store Manager</legend>
-        <form>
-          <label>Location:</label><br>
-          <select id="select" class="location-name" name="location-name-update">
-            <option value="" selected disabled selected>Select below</option>
-          </select><br>
-          <label>Minimum Customers:</label><br>
-          <input id="min-cust-update" type="number" name="min-customer-update" required><br>
-          <label>Maximum Customers:</label><br>
-          <input id="max-cust-update" type="number" name="max-customer-update" required><br>
-          <label>Avg Donuts Per Customer:</label><br>
-          <input id="avg-donuts-cust-update" type="number" name="avg-donuts-customer-update" required><br>
-          <button id="update" class="modify-table">Update</button>
-        </form>
-      </fieldset>
-    </section>
-    <section class="mission">
-      <img class="donut" src="images/2donuts.png">
-      <h2>Mission Statement:</h2>
-        <p>World domination through consumption of delicious, deep fried pastry. Obesity is the new status quo. This statement is endorsed by Homer J. Simpson and The American Doughnut Society.</p>
-    </section>
+    <main>
+      <table>
+        <h2>Doughnut Demand Estimates By Store Location:</h2>
+        <thead>
+          <tr>
+            <th class="table-header">Locations</th>
+            <th class="hour" scope="col">7:00 AM</th>
+            <th class="hour" scope="col">8:00 AM</th>
+            <th class="hour" scope="col">9:00 AM</th>
+            <th class="hour" scope="col">10:00 AM</th>
+            <th class="hour" scope="col">11:00 AM</th>
+            <th class="hour" scope="col">12:00 PM</th>
+            <th class="hour" scope="col">1:00 PM</th>
+            <th class="hour" scope="col">2:00 PM</th>
+            <th class="hour" scope="col">3:00 PM</th>
+            <th class="hour" scope="col">4:00 PM</th>
+            <th class="hour" scope="col">5:00 PM</th>
+            <th class="hour" scope="col">Daily</th>
+          </tr>
+        </thead>
+        <tbody id="donut-estimate">
+        </tbody>
+      </table>
+      <p>This table predicts doughnut demand at each location, based on past customer data. Estimates are provided on a per hour and per day basis.</p>
+      <h2 class="manager">Store Location Manager:</h2>
+      <section class="fields">
+        <div class="card-container">
+          <input type="checkbox" class="hacky-input" id="hacky-input1">
+          <label for="hacky-input1">
+            <div class="card">
+              <div class="front">
+                <h2 class="card-header">Add New Store</h2>
+                <img class="card-icon" src="images/open_sign_icon.png" alt="Icon of open sign">
+              </div>
+              <div class="back">
+                <fieldset>
+                  <legend>Add New Store</legend>
+                  <form class="add-store" action="#" onsubmit="return false">
+                    <label>Location:</label><br>
+                    <input id="location-add" type="text" name="location-name-add" required><br>
+                    <label>Minimum Customers:</label><br>
+                    <input id="min-cust-add" type="number" step="any" name="min-customer-add" required><br>
+                    <label>Maximum Customers:</label><br>
+                    <input id="max-cust-add" type="number" step="any" name="max-customer-add" required><br>
+                    <label>Avg Donuts Per Customer:</label><br>
+                    <input id="avg-donuts-cust-add" type="number" step="any" name="avg-donuts-customer-add" required><br>
+                    <button id="add" class="modify-table">Add</button>
+                  </form>
+                </fieldset>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="card-container">
+          <input type="checkbox" class="hacky-input" id="hacky-input2">
+          <label for="hacky-input2">
+            <div class="card">
+              <div class="front">
+                <h2 class="card-header">Update Store</h2>
+                <img class="card-icon" src="images/donut_store.png" alt="Icon of donut store">
+              </div>
+              <div class="back">
+                <fieldset>
+                  <legend>Update Store</legend>
+                  <form action="#" onsubmit="return false">
+                    <select id="update-dropdown" class="dropdown" name="location-name-update">
+                      <option value="" selected disabled selected>Select below</option>
+                    </select>
+                    <label>Location:</label><br>
+                    <input id="location-update" type="text" name="location-name-update" required><br>
+                    <label>Minimum Customers:</label><br>
+                    <input id="min-cust-update" type="number" step="any" name="min-customer-update" required><br>
+                    <label>Maximum Customers:</label><br>
+                    <input id="max-cust-update" type="number" step="any" name="max-customer-update" required><br>
+                    <label>Avg Donuts Per Customer:</label><br>
+                    <input id="avg-donuts-cust-update" type="number" step="any" name="avg-donuts-customer-update" required><br>
+                    <button id="update" class="modify-table">Update</button>
+                  </form>
+                </fieldset>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="card-container">
+          <input type="checkbox" class="hacky-input" id="hacky-input3">
+          <label for="hacky-input3">
+            <div class="card">
+              <div class="front">
+                <h2 class="card-header">Remove Store</h2>
+                <img class="card-icon" src="images/closed_sign_icon.png" alt="Icon of closed sign">
+              </div>
+              <div class="back">
+                <fieldset>
+                  <legend>Remove Store</legend>
+                  <form class="remove-store" action="#" onsubmit="return false">
+                    <select id="remove-dropdown" class="dropdown" name="remove-store">
+                      <option value="" selected disabled selected>Select below</option>
+                    </select>
+                    <button id="remove" class="modify-table">Remove</button>
+                  </form>
+                </fieldset>
+              </div>
+            </div>
+          </label>
+        </div>
+      </section>
+      <section class="mission">
+        <img class="donut" src="images/2donuts.png" alt="Icon of two doughnuts">
+        <h2>Mission Statement:</h2>
+          <p>World domination through consumption of delicious, deep fried pastry. Obesity is the new status quo. This statement is endorsed by Homer J. Simpson and The American Doughnut Society.</p>
+      </section>
+    </main>
+    <footer>
+     <p>© 2015 Top Pot Doughnuts, Inc.</p>
     <script src="shop.js"></script>
   </body>
